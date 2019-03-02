@@ -1,6 +1,7 @@
 # Chat based on gRPC
 
-Project `grpchat` - simple server/client chat based on gRPC, Protocol Buffers with golang for server side and Vue, gRPC-web for client side
+Project `grpchat` - simple server/client chat based on gRPC
+, Protocol Buffers with golang for server side and Vue, Typescript, gRPC-web, Stylus and Cypress for client side
 
 ## Usage:
 

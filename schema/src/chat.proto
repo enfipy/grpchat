@@ -1,0 +1,16 @@
+syntax = "proto3";
+package chat;
+
+service Chat {
+  rpc MessageStream (stream ClientMessage) returns (stream ServerMessage);
+}
+
+message ClientMessage {
+  string message = 1;
+}
+
+message ServerMessage {
+  string username = 1;
+  string message = 2;
+  int64 created_at = 3;
+}
