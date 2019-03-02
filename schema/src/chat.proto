@@ -2,7 +2,8 @@ syntax = "proto3";
 package chat;
 
 service Chat {
-  rpc MessageStream (stream ClientMessage) returns (stream ServerMessage);
+  rpc GetMessages (GetMessagesRequest) returns (stream ServerMessage);
+  rpc SendMessage (ClientMessage) returns (SendMessageResponse);
 }
 
 message ClientMessage {
@@ -14,3 +15,9 @@ message ServerMessage {
   string message = 2;
   int64 created_at = 3;
 }
+
+message GetMessagesRequest {
+  string username = 1;
+}
+
+message SendMessageResponse {}

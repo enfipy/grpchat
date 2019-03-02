@@ -13,6 +13,33 @@ export namespace ClientMessage {
   }
 }
 
+export class GetMessagesRequest {
+  constructor ();
+  getUsername(): string;
+  setUsername(a: string): void;
+  toObject(): GetMessagesRequest.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => GetMessagesRequest;
+}
+
+export namespace GetMessagesRequest {
+  export type AsObject = {
+    Username: string;
+  }
+}
+
+export class SendMessageResponse {
+  constructor ();
+  toObject(): SendMessageResponse.AsObject;
+  serializeBinary(): Uint8Array;
+  static deserializeBinary: (bytes: {}) => SendMessageResponse;
+}
+
+export namespace SendMessageResponse {
+  export type AsObject = {
+  }
+}
+
 export class ServerMessage {
   constructor ();
   getUsername(): string;
