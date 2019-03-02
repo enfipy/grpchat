@@ -16,6 +16,9 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "schema/*": [
+        "../schema/gen/web/*"
       ]
     },
     "lib": [

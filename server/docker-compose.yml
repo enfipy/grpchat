@@ -1,0 +1,43 @@
+version: "3"
+
+networks:
+  dev:
+
+volumes:
+  data:
+
+services:
+
+  grpchat:
+    container_name: grpchat
+    build:
+      args:
+        PROJECT: grpchat
+      context: .
+      dockerfile: ./docker/dev.Dockerfile
+    volumes:
+      - ./src:/go/src/grpchat/src
+    environment:
+      APP_ENV: development
+      SERVER_PORT: 50051
+      CHAT_LENGTH: 100
+
+      REDIS_ADDRESS: redis:6379
+      REDIS_NETWORK: tcp
+    ports:
+      - 50051:50051
+    networks:
+      - dev
+    depends_on:
+      - redis
+
+  redis:
+    container_name: redis
+    image: redis
+    command: redis-server --appendonly yes
+    logging:
+      driver: none
+    volumes:
+      - data:/data
+    networks:
+      - dev
