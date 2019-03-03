@@ -1,0 +1,53 @@
+version: "3"
+
+networks:
+  test:
+
+volumes:
+  data:
+
+services:
+
+  proxy:
+    container_name: proxy
+    build:
+      context: envoy
+    ports:
+      - 50051:50051
+      - 9901:9901
+    logging:
+      driver: none
+    networks:
+      - test
+    depends_on:
+      - grpchat
+
+  grpchat:
+    container_name: grpchat
+    build:
+      args:
+        PROJECT: grpchat
+      context: server
+      dockerfile: docker/prod.Dockerfile
+    environment:
+      APP_ENV: production
+      SERVER_PORT: 50051
+      CHAT_LENGTH: 100
+
+      REDIS_ADDRESS: redis:6379
+      REDIS_NETWORK: tcp
+    networks:
+      - test
+    depends_on:
+      - redis
+
+  redis:
+    container_name: redis
+    image: redis
+    command: redis-server --appendonly yes
+    logging:
+      driver: none
+    volumes:
+      - data:/data
+    networks:
+      - test

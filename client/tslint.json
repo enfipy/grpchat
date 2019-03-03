@@ -5,13 +5,15 @@
   ],
   "linterOptions": {
     "exclude": [
-      "node_modules/**"
+      "node_modules/**",
+      "../schema/gen/web/*"
     ]
   },
   "rules": {
     "quotemark": [true, "single"],
     "indent": [true, "spaces", 2],
     "semicolon": [true, "never"],
+    "no-console": false,
     "interface-name": false,
     "ordered-imports": false,
     "object-literal-sort-keys": false,

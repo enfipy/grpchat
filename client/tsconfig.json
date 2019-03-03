@@ -19,6 +19,9 @@
       ],
       "schema/*": [
         "../schema/gen/web/*"
+      ],
+      "grpc-web": [
+        "node_modules/grpc-web"
       ]
     },
     "lib": [
