@@ -22,6 +22,8 @@ func NewGRPC(serverInstance *grpc.Server, chatController chat.Controller) {
 }
 
 func (server *ChatServer) GetMessages(req *chatPB.GetMessagesRequest, stream chatPB.Chat_GetMessagesServer) error {
+	ctx := stream.Context()
+
 	userLeft := server.ChatController.UserJoin(req.Username)
 	defer userLeft()
 
@@ -31,11 +33,15 @@ func (server *ChatServer) GetMessages(req *chatPB.GetMessagesRequest, stream cha
 
 		outgoing := server.ChatController.GetMessages()
 		for {
-			out, ok := <-outgoing
-			if !ok {
+			select {
+			case <-ctx.Done():
 				return
+			case out, ok := <-outgoing:
+				if !ok {
+					return
+				}
+				stream.Send(out.ToProtobuf())
 			}
-			stream.Send(out.ToProtobuf())
 		}
 	}()
 

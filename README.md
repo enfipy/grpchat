@@ -25,10 +25,9 @@ Project structure:
 
 ## Todo:
 
-1. Fix bug: after reload page - stream does not closing
-2. Add authentication
-3. Make better UI for messages and input
-4. Add modal for username ask
+1. Add authentication
+2. Make better UI for messages and input
+3. Add modal for username ask
 
 ## Links:
 
