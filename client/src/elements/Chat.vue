@@ -1,6 +1,6 @@
 <template>
   <div id="chat">
-    <div id="messages">
+    <div id="messages" v-chat-scroll="{always: false, smooth: true}">
       <message
         v-for="(msg, index) in $store.getters['chat/getMessages']"
         :key="index"
@@ -37,7 +37,7 @@ export default Vue.extend({
   },
   data: () => {
     return {
-      message: 'first message',
+      message: '',
     }
   },
   mounted() {
@@ -54,7 +54,6 @@ export default Vue.extend({
       this.$store.watch(
         (state: any, getters: any) => getters['user/getUsername'],
         (newValue, oldValue) => {
-          console.log(oldValue)
           if (newValue !== '') {
             this.getMessages(newValue)
           }
@@ -74,6 +73,7 @@ export default Vue.extend({
         this.$store.commit('chat/addMessage', res.toObject())
       })
       stream.on('error', (err: any) => {
+        this.$store.commit('user/setUsername', '')
         alert(`Failed to get messages: ${err.message}`)
       })
     },
