@@ -22,6 +22,13 @@ Project structure:
 └── server/ - go backend
 ```
 
+## Todo:
+
+1. Fix bug: after reload page - stream does not closing
+2. Add authentication
+3. Make better UI for messages and input
+4. Add modal for username ask
+
 ## Links:
 
 Read about protobuf [here](https://developers.google.com/protocol-buffers/)
