@@ -1,7 +1,8 @@
 # Chat based on gRPC
 
 Project `grpchat` - simple server/client chat based on gRPC
-, Protocol Buffers with golang for server side and Vue, Typescript, gRPC-web, Stylus and Cypress for client side
+, Protocol Buffers with golang for server side and Vue, Typescript, gRPC-web, Stylus and Cypress for client side.
+Feel free to try [demo](https://enfipy.github.io/grpchat/)
 
 ## Usage:
 
@@ -26,7 +27,8 @@ Project structure:
 ## Todo:
 
 1. Add authentication
-1. Write `cypress` tests
+2. Write `cypress` tests
+3. Fix demo username release
 
 ## Links:
 
