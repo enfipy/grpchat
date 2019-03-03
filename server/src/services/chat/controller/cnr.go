@@ -27,32 +27,18 @@ func (cnr *chatController) UserJoin(username string) func() {
 	}
 }
 
-func (cnr *chatController) MessageStream(username string, incoming <-chan string) <-chan *models.Message {
+func (cnr *chatController) GetMessages() <-chan *models.Message {
 	outgoing := make(chan *models.Message)
 	go func() {
 		defer close(outgoing)
 
 		newMessages := cnr.chatUsecase.SubscribeForMessages()
 		for {
-			select {
-			case ownMessage, ok := <-incoming:
-				if !ok {
-					return
-				}
-				msg := &models.Message{
-					Username:  username,
-					Data:      ownMessage,
-					CreatedAt: time.Now().Unix(),
-				}
-				cnr.chatUsecase.SaveMessage(msg)
-			case newMessage, ok := <-newMessages:
-				if !ok {
-					return
-				}
-				if newMessage.Username != username {
-					outgoing <- newMessage
-				}
+			newMessage, ok := <-newMessages
+			if !ok {
+				return
 			}
+			outgoing <- newMessage
 		}
 	}()
 	go func() {
@@ -62,4 +48,13 @@ func (cnr *chatController) MessageStream(username string, incoming <-chan string
 		}
 	}()
 	return outgoing
+}
+
+func (cnr *chatController) SendMessage(username, message string) {
+	msg := &models.Message{
+		Username:  username,
+		Data:      message,
+		CreatedAt: time.Now().Unix(),
+	}
+	cnr.chatUsecase.SaveMessage(msg)
 }

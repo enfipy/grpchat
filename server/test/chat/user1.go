@@ -4,7 +4,6 @@ import (
 	"context"
 	"io"
 	"log"
-	"time"
 
 	chatPB "github.com/enfipy/grpchat/schema/gen/go"
 
@@ -15,12 +14,10 @@ import (
 func (t *test) User1(conn *grpc.ClientConn) {
 	client := chatPB.NewChatClient(conn)
 
-	headers := metadata.Pairs(
-		"username", "johndoe",
-	)
-	ctx := metadata.NewOutgoingContext(context.Background(), headers)
-
-	stream, err := client.MessageStream(ctx)
+	req := chatPB.GetMessagesRequest{
+		Username: "johndoe",
+	}
+	stream, err := client.GetMessages(context.Background(), &req)
 	defer stream.CloseSend()
 	if err != nil {
 		panic(err)
@@ -42,22 +39,22 @@ func (t *test) User1(conn *grpc.ClientConn) {
 		}
 	}()
 
-	messages := []*chatPB.ClientMessage{
-		{Message: "John: First message"},
-		{Message: "John: Second message"},
-		{Message: "John: Third message"},
-	}
-
-	for _, message := range messages {
-		err := stream.Send(message)
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			log.Fatalf("Failed to send a message: %v", err)
-		}
-		time.Sleep(1 * time.Second)
-	}
-
 	<-done
+}
+
+func (t *test) User1Send(conn *grpc.ClientConn) {
+	client := chatPB.NewChatClient(conn)
+
+	headers := metadata.Pairs(
+		"username", "johndoe",
+	)
+	ctx := metadata.NewOutgoingContext(context.Background(), headers)
+
+	req := chatPB.ClientMessage{
+		Message: "message",
+	}
+	_, err := client.SendMessage(ctx, &req)
+	if err != nil {
+		panic(err)
+	}
 }

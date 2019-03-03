@@ -1,7 +1,7 @@
 module github.com/enfipy/grpchat/server
 
 require (
-	github.com/enfipy/grpchat v0.0.0-20190302211359-e307f80168f7
+	github.com/enfipy/grpchat v0.0.0-20190302235721-4704022f6531
 	github.com/enfipy/locker v1.0.0
 	github.com/golang/protobuf v1.3.0 // indirect
 	github.com/gomodule/redigo v2.0.0+incompatible
