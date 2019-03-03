@@ -2,13 +2,15 @@
   <transition name="modal">
     <div id="modal-screen">
         <div class="modal-container" @click.stop>
-          <form @submit.prevent="setUsername">
+          <img id="logo" src="../assets/logo.svg" />
+          <form id="inputs" @submit.prevent="setUsername">
             <input
+              id="username"
               type="text"
               placeholder="Username"
               v-model="username"
             />
-            <input id="setUsername" type="submit" value="Enter grpchat" />
+            <input id="set_username" type="submit" value="Enter chat" />
           </form>
       </div>
     </div>
@@ -63,11 +65,39 @@ export default {
     transform: scale(1.05)
 
   .modal-container
-    min-width: 320px
-    min-height: 240px
+    padding 30px 20px
 
-    background: #2c3e50
+    background: #ffffff
     border-radius: 5px
     box-shadow: 0 3px 8px rgba(0, 0, 0, .33)
     transition: all .2s ease
+
+    #logo
+      margin-bottom 30px
+
+    #inputs
+      min-height 40px
+      display flex
+      border-top 1px #41b883
+
+      #username
+        margin-right 10px
+        padding 0 10px
+
+        border-radius 3px
+        border none
+        box-shadow inset 0 0 5px #999999
+        width 70%
+        font-size 16px
+
+        &:focus
+          outline: none
+          caret-color: #41b883
+          box-shadow inset 0 0 5px #41b883
+
+      #set_username
+        flex: 1
+        padding: 10px
+        border-radius 5px
+        font-size 16px
 </style>

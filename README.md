@@ -26,6 +26,7 @@ Project structure:
 ## Todo:
 
 1. Add authentication
+1. Write `cypress` tests
 
 ## Links:
 
