@@ -26,14 +26,16 @@ export default Vue.extend({
   display flex
   justify-content space-between
   background-color #ffffff
-  margin 5px
-  padding 5px
+  margin-bottom 10px
+  padding 5px 10px
   border-radius 5px
+  box-shadow inset 0 0 1px #999999
 
   .username
-    color #c1c3ce
+    color #8d8d8d
   .body
-    color #000000
+    max-width 300px
+    color #3e3e3e
   .time
-    color #777777
+    color #8d8d8d
 </style>

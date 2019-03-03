@@ -26,8 +26,6 @@ Project structure:
 ## Todo:
 
 1. Add authentication
-2. Make better UI for messages and input
-3. Add modal for username ask
 
 ## Links:
 

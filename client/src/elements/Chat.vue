@@ -9,11 +9,11 @@
     </div>
     <form id="inputs" @submit.prevent="sendMessage">
       <input
-        type="text"
+        id="message_box"
         placeholder="Your message"
         v-model="message"
       />
-      <input id="sendMessage" type="submit" value="Send" />
+      <input id="send_message" type="submit" value="Send" />
     </form>
   </div>
 </template>
@@ -88,6 +88,8 @@ export default Vue.extend({
       client.sendMessage(req, { username }).catch((err: any) => {
         alert(`Failed to send message: ${err.message}`)
       })
+
+      this.message = ''
     },
   },
 })
@@ -99,18 +101,39 @@ export default Vue.extend({
   background-color #fafafa
   border-radius 10px
   padding 20px
-  min-height 600px
+  max-height 600px
   min-width 400px
   display flex
   flex-direction column
 
 #messages
-  display flex
-  flex-direction column
-
-  .message
-    list-style-type none
+  height 100%
+  overflow-y scroll
 
 #inputs
-  margin-top auto
+  min-height 40px
+  display flex
+  border-top 1px #41b883
+  margin-top 20px
+
+  #message_box
+    margin-right 10px
+    padding 0 10px
+
+    border-radius 3px
+    border none
+    box-shadow inset 0 0 5px #999999
+    width 70%
+    font-size 16px
+
+    &:focus
+      outline: none
+      caret-color: #41b883
+      box-shadow inset 0 0 5px #41b883
+
+  #send_message
+    flex: 1
+    padding: 10px
+    border-radius 5px
+    font-size 16px
 </style>
