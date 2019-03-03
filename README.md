@@ -17,8 +17,9 @@ Project structure:
 
 ```
 .
-├── client/ - vue frontend
 ├── schema/ - proto files + generated code by protoc
+├── envoy/ - envoy proxy config + dockerfile
+├── client/ - vue frontend
 └── server/ - go backend
 ```
 
