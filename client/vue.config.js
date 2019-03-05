@@ -1,6 +1,7 @@
 const path = require('path')
 
 module.exports = {
+  // publicPath: 'grpchat',
   configureWebpack: {
     resolve: {
       alias: {
