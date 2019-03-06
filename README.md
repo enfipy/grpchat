@@ -31,6 +31,7 @@ Project structure:
 
 1. Add authentication through `Github OAuth2`
 2. Add chats/groups
+3. Setup CI/CD
 
 ## Links:
 
