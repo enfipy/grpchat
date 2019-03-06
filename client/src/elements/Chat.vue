@@ -127,8 +127,8 @@ export default Vue.extend({
     font-size 16px
 
     &:focus
-      outline: none
-      caret-color: #41b883
+      outline none
+      caret-color #41b883
       box-shadow inset 0 0 5px #41b883
 
   #send_message
@@ -136,4 +136,7 @@ export default Vue.extend({
     padding: 10px
     border-radius 5px
     font-size 16px
+
+    &:focus
+      outline none
 </style>

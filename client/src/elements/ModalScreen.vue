@@ -1,7 +1,7 @@
 <template>
   <transition name="modal">
-    <div id="modal-screen">
-        <div class="modal-container" @click.stop>
+    <div id="modal_screen">
+        <div class="modal_container" @click.stop>
           <img id="logo" src="../assets/logo.svg" />
           <form id="inputs" @submit.prevent="setUsername">
             <input
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-#modal-screen
+#modal_screen
   position: fixed
   width: 100%
   height: 100%
@@ -60,11 +60,11 @@ export default {
   &.modal-enter, &.modal-leave-to
     opacity: 0
 
-  &.modal-enter .modal-container,
-  &.modal-leave-to .modal-container
+  &.modal-enter .modal_container,
+  &.modal-leave-to .modal_container
     transform: scale(1.05)
 
-  .modal-container
+  .modal_container
     padding 30px 20px
 
     background: #ffffff
@@ -100,4 +100,7 @@ export default {
         padding: 10px
         border-radius 5px
         font-size 16px
+
+        &:focus
+          outline none
 </style>

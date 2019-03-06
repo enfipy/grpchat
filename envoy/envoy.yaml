@@ -33,14 +33,14 @@ static_resources:
           - name: envoy.grpc_web
           - name: envoy.cors
           - name: envoy.router
-      tls_context:
-        common_tls_context:
-          alpn_protocols: "h2"
-          tls_certificates:
-          - certificate_chain:
-              filename: "/keys/crt"
-            private_key:
-              filename: "/keys/key"
+      # tls_context:
+      #   common_tls_context:
+      #     alpn_protocols: "h2"
+      #     tls_certificates:
+      #     - certificate_chain:
+      #         filename: "/keys/crt"
+      #       private_key:
+      #         filename: "/keys/key"
 
   clusters:
   - name: grpchat

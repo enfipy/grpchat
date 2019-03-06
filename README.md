@@ -29,8 +29,8 @@ Project structure:
 
 ## Todo:
 
-1. Add authentication
-2. Write `cypress` tests
+1. Add authentication through `Github OAuth2`
+2. Add chats/groups
 
 ## Links:
 
