@@ -20,7 +20,7 @@ func InitServices(cnfg *config.Config) (*grpc.Server, func()) {
 
 	chatUcs := chatUsecase.NewUsecase(cnfg, pool, locker)
 	chatCnr := chatController.NewController(cnfg, chatUcs)
-	chatDelivery.NewGRPC(srv, chatCnr)
+	chatDelivery.NewDelivery(srv, chatCnr)
 
 	reflection.Register(srv)
 

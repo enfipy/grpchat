@@ -6,19 +6,10 @@ import (
 	chatPB "github.com/enfipy/grpchat/schema/gen/go"
 
 	"golang.org/x/net/context"
-	"google.golang.org/grpc"
 )
 
 type ChatServer struct {
 	ChatController chat.Controller
-}
-
-func NewGRPC(serverInstance *grpc.Server, chatController chat.Controller) {
-	server := &ChatServer{
-		ChatController: chatController,
-	}
-
-	chatPB.RegisterChatServer(serverInstance, server)
 }
 
 func (server *ChatServer) GetMessages(req *chatPB.GetMessagesRequest, stream chatPB.Chat_GetMessagesServer) error {
