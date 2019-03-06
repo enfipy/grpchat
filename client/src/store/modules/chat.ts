@@ -1,5 +1,9 @@
 const messages: string[] = []
 
+const moduleState = {
+  messages,
+}
+
 const mutations = {
   addMessage(state: any, value: any) {
     if (state.messages.length >= 100) { state.messages.shift() }
@@ -24,7 +28,7 @@ const getters = {
 
 export default {
   namespaced: true,
-  state: { messages },
+  state: moduleState,
   mutations,
   getters,
 }

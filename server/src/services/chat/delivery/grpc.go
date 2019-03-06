@@ -1,16 +1,10 @@
 package delivery
 
 import (
-	"github.com/enfipy/grpchat/server/src/services/chat"
-
 	chatPB "github.com/enfipy/grpchat/schema/gen/go"
 
 	"golang.org/x/net/context"
 )
-
-type ChatServer struct {
-	ChatController chat.Controller
-}
 
 func (server *ChatServer) GetMessages(req *chatPB.GetMessagesRequest, stream chatPB.Chat_GetMessagesServer) error {
 	ctx := stream.Context()

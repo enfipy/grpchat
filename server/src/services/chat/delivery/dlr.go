@@ -8,6 +8,10 @@ import (
 	"google.golang.org/grpc"
 )
 
+type ChatServer struct {
+	ChatController chat.Controller
+}
+
 func NewDelivery(serverInstance *grpc.Server, chatController chat.Controller) {
 	server := &ChatServer{
 		ChatController: chatController,

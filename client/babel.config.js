@@ -11,5 +11,5 @@ module.exports = {
     ],
     '@vue/app'
   ],
-  plugins: ['add-module-exports']
+  plugins: ['add-module-exports'],
 }
